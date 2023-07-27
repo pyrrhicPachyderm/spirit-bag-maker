@@ -1,0 +1,106 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Spirit Bag Maker</title>
+		<meta name="description" content="An applet for making spirit bags for the MJ & iakona TTS mod."/>
+		<meta name="author" content="pyrrhicPachyderm"/>
+	</head>
+	
+	<body>
+		<div>
+			<h2>Spirit Bag Maker</h2>
+			<p>For the MJ & iakona TTS mod.</p>
+			
+			<style>
+				table#inputsTable td:nth-child(2n+1) {text-align: right;}
+			</style>
+			<table id="inputsTable">
+				<tr>
+					<td><label for="spiritName">Spirit name:</label></td>
+					<td><input type="text" id="spiritName" style="width: 300px;"/></td>
+				</tr>
+				<tr>
+					<td><label for="frontURL">Top image (play side) URL:</label></td>
+					<td><input type="text" id="frontURL" style="width: 750px;"/></td>
+				</tr>
+				<tr>
+					<td><label for="backURL">Bottom image (lore side) URL:</label></td>
+					<td><input type="text" id="backURL" style="width: 750px;"/></td>
+				</tr>
+				<tr>
+					<td><label for="complexity">Complexity:</label></td>
+					<td><select id="complexity">
+						<option selected hidden disabled></option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Very High</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><label for="requiresTokens">Requires Tokens:</label></td>
+					<td><input type="checkbox" id="requiresTokens"/></td>
+				</tr>
+				<tr>
+					<td><label for="requiresBadlands">Requires Badlands:</label></td>
+					<td><input type="checkbox" id="requiresBadlands"/></td>
+				</tr>
+			</table>
+			
+			<p>
+				<button id="download" onclick="downloadJSON();">Download Bag JSON</button>
+			</p>
+			
+			<h4>What's this?</h4>
+			
+			In the MJ & iakona mod, you may notice that the "spirit panels" along the top of the table are not simply spirit panels, but bags.
+			They contain the actual spirit panel, plus the unique power cards, any aspects, and any other pieces that should appear in the play area (e.g. Fangs' starting beast, Ocean's drowning bag).
+			These bags are slightly tricky to make, as they actually consist of two joined objects, but are quite handy for keeping custom spirits as one tidy object.
+			As such, this applet will help you make them.
+			
+			<h4>How to use</h4>
+			<ol>
+				<li><p>
+					Create your normal spirit panel in TTS, however you normally do so.
+				</p></li>
+				<li><p>
+					In TTS, right click your spirit panel and select "Custom".
+					The dialogue box that appears should have two URLs: "Top Image" and "Bottom Image".
+					Copy-paste them into the relevant boxes on this site.
+					These should both begin with "http://cloud-3.steamusercontent.com"; otherwise they'll be local files and sharing them with other people won't work.
+					If they're not correct, set them again, being sure to select "Cloud" when TTS asks how you want to store.
+				</p></li>
+				<li><p>
+					Set the name of your spirit in the text box above.
+					This is essential, as TTS uses the spirit name to add "Choose Spirit" buttons.
+				</p></li>
+				<li><p>
+					Set the Complexity of your spirit in the dropdown above, and tick if it needs tokens or badlands.
+					This is non-essential, and just sets the tags on the bag for use by the spirit randomiser.
+					These are easy enough to change later in TTS if you want.
+				</p></li>
+				<li><p>
+					Download the bag JSON with the button above, and save it to your Saved Objects folder.
+					Where exactly this is depends on your operating system:
+					<ul>
+						<li>Linux: <code>~/.local/share/Tabletop Simulator/Saves/Saved Objects/</code></li>
+						<li>Mac OS X: <code>~/Library/Tabletop Simulator/Saves/Saved Objects/</code></li>
+						<li>Windows: <code>%USERPROFILE%\Documents\My Games\Tabletop Simulator\Saves\Saved Objects\</code></li>
+					</ul>
+				</p></li>
+				<li><p>
+					In TTS, load the bag (the same way you would load any saved object).
+					Drop the spirit panel, the unique power cards, and any other objects you want into the bag, then save it again.
+				</p></li>
+				<li><p>
+					Delete all existing copies of the panel or bag before loading it from your saved objects.
+					The "Choose Spirit" button will not appear on the bag unless it is the only copy of the panel or bag present when it loads.
+				</p></li>
+			</ol>
+		</div>
+		
+		<script src="script.js"></script>
+	</body>
+</html>
